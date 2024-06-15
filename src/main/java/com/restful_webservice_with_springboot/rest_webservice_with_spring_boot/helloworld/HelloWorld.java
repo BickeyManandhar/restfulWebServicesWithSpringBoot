@@ -8,6 +8,11 @@ public class HelloWorld {
 
     @GetMapping(path="/hello-world")
     public String getHelloWorld(){
-        return "Hello World.";
+        return "Hello World."; //returning string
+    }
+
+    @GetMapping(path="/hello-world-bean")
+    public HelloWorldBean getHelloWorldBean(){
+        return new HelloWorldBean("Hello World."); //returning instance of our own class, return JSON
     }
 }
