@@ -42,4 +42,16 @@ public class VersioningPersonController {
     public PersonV2 getPersonV2ByRequestHeader(){
         return new PersonV2(new Name("John","Cena"));
     }
+
+    //versioning by accept header(Media type versioning)
+    @GetMapping(path="/person/accept", produces="application/vnd.company.app-v1+json")
+    public PersonV1 getPersonV1ByAcceptHeader(){
+        return new PersonV1("John Cena");
+    }
+
+    //versioning by accept header(Media type versioning)
+    @GetMapping(path="/person/accept", produces="application/vnd.company.app-v2+json")
+    public PersonV2 getPersonV2ByAcceptHeader(){
+        return new PersonV2(new Name("John","Cena"));
+    }
 }
