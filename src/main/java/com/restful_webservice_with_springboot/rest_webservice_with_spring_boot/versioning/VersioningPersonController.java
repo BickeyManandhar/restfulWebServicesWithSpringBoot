@@ -30,4 +30,16 @@ public class VersioningPersonController {
     public PersonV2 getPersonV2ByRequestParameter(){
         return new PersonV2(new Name("John","Cena"));
     }
+
+    //versioning by header
+    @GetMapping(path="/person/header", headers="X-API-Version=1")
+    public PersonV1 getPersonV1ByRequestHeader(){
+        return new PersonV1("John Cena");
+    }
+
+    //versioning by header
+    @GetMapping(path="/person/header", headers="X-API-Version=2")
+    public PersonV2 getPersonV2ByRequestHeader(){
+        return new PersonV2(new Name("John","Cena"));
+    }
 }
