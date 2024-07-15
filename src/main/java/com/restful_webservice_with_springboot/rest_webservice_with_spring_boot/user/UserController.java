@@ -1,5 +1,6 @@
 package com.restful_webservice_with_springboot.rest_webservice_with_spring_boot.user;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -31,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/users")
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    public ResponseEntity<User> createUser (@Valid@RequestBody User user){ //@Valid does not itself validate User, we need to add validation in specific variable in User class
         User savedUser=userDaoService.createUser(user);
         // /users/{id} => /users, user.getId
         //location will be returned in header
